@@ -110,13 +110,23 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/AppLogic/CreateToDo.js":
+/*!************************************!*\
+  !*** ./src/AppLogic/CreateToDo.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   createToDo: () => (/* binding */ createToDo)\n/* harmony export */ });\nfunction createToDo () {\n    class Item {\n    constructor(title, description, dueDate, priority, notes, checklist) {\n      this.title = title;\n      this.description = description;\n      this.dueDate = dueDate;\n      this.priority = priority;\n      this.notes = notes;\n      this.checklist = checklist;\n    }\n    date() {\n        const date = newDate();\n        return date.getFullYear() - this.year;\n    }\n    }\n    const item1 = new Item(\"Study\", \"Study 2 hours\", \"Infinite\", 2, \"\", \"\" );\n    console.log(item1); \n}\n\n//# sourceURL=webpack://webpack-demo/./src/AppLogic/CreateToDo.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _AppLogic_CreateToDo_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppLogic/CreateToDo.js */ \"./src/AppLogic/CreateToDo.js\");\n\n\n(0,_AppLogic_CreateToDo_js__WEBPACK_IMPORTED_MODULE_1__.createToDo) ();\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
 
 /***/ })
 
