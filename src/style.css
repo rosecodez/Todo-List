@@ -44,3 +44,51 @@ button {
     flex-direction: column;
     gap: 12px;
 }
+#search {
+    display: flex;
+    height: 39px;
+    gap: 5px;
+}
+#search button:last-child {
+    width: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#dialog {
+    position: relative;
+    width: 546px;
+    margin-left: 708px;
+    margin-top: 152px;
+}
+input[type=text] {
+    font-size: 20px;
+}
+.text {
+    font-size: 25px;
+}
+label {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+input[class=form] {
+    padding: 12px 9px;
+}
+input:focus {
+    background-color: #f7fee7;
+}
+form {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 663px;
+}
+.buttons, #checklist {
+    padding-top: 20px;
+}
+#checklist {
+    display: flex;
+    gap: 20px;
+}
