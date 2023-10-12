@@ -16,3 +16,31 @@ export function createToDo () {
     const item1 = new Item("Study", "Study 2 hours", "Infinite", 2, "", "" );
     console.log(item1); 
 }
+export function createItem(num) {
+    const tasks = document.getElementById("tasks");
+    let task = document.createElement("div");
+    tasks.appendChild(task);
+    task.setAttribute("id", "task"+num);
+
+    //table headers
+    let titleText = document.createElement("div");
+    task.appendChild(titleText);
+    titleText.setAttribute("id", "titleText-"+num);
+    
+    let descriptionText = document.createElement("div");
+    task.appendChild(descriptionText);
+    descriptionText.setAttribute("id", "descriptionText-"+num);
+
+    let dueDateText = document.createElement("div");
+    task.appendChild(dueDateText);
+    dueDateText.setAttribute("id", "dueDateText-"+num);
+
+    let priorityText = document.createElement("div");
+    task.appendChild(priorityText);
+    priorityText.setAttribute("id", "priorityText-"+num);
+
+    let notesText = document.createElement("div");
+    task.appendChild(notesText);
+    notesText.setAttribute("id", "notesText-"+num);
+
+}

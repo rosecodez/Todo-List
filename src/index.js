@@ -1,7 +1,7 @@
 import './style.css';
 import { createToDo } from "./AppLogic/CreateToDo.js";
 import { getCurrentDate } from "./AppLogic/currentDate.js";
-
+import { createItem } from "./AppLogic/CreateToDo.js";
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -45,41 +45,4 @@ confirmBtn.onclick = function () {
         priority.value = "priority1";
         notes.value = "";
     }
-}
-
-function createItem(num) {
-    let task = document.createElement("div");
-    tasks.appendChild(task);
-    task.setAttribute("id", "task"+num);
-
-    //table headers
-    let titleText = document.createElement("div");
-    task.appendChild(titleText);
-    titleText.setAttribute("id", "titleText-"+num);
-    
-    let descriptionText = document.createElement("div");
-    task.appendChild(descriptionText);
-    descriptionText.setAttribute("id", "descriptionText-"+num);
-
-    let dueDateText = document.createElement("div");
-    task.appendChild(dueDateText);
-    dueDateText.setAttribute("id", "dueDateText-"+num);
-
-    let priorityText = document.createElement("div");
-    task.appendChild(priorityText);
-    priorityText.setAttribute("id", "priorityText-"+num);
-
-    let notesText = document.createElement("div");
-    task.appendChild(notesText);
-    notesText.setAttribute("id", "notesText-"+num);
-
-    let deleteBtn = document.createElement("button");
-    task.appendChild(deleteBtn);
-    deleteBtn.setAttribute("id", "delete")
-    deleteBtn.textContent = "Delete";
-
-    deleteBtn.addEventListener("click", function (event) {
-        task.remove(); 
-    })
-    console.log(titleText)
 }
