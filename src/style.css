@@ -52,7 +52,7 @@ button {
 #search button:last-child {
     width: 65px;
     display: flex;
-    align-items: center;
+align-items: center;
     justify-content: center;
 }
 #dialog {
@@ -91,4 +91,39 @@ form {
 #checklist {
     display: flex;
     gap: 20px;
+    
+}
+option {
+    font-size: 20px;
+    display: flex;
+    cursor: pointer;
+}
+option:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+select {
+    padding: 12px 9px;
+    background-color: #fff;
+    font-size: 20px;
+    color: #000;
+    cursor: pointer;
+}
+option#priority1 {
+    background: rgba(255, 0, 0, 0.527);
+}
+option#priority2 {
+    background: rgba(255, 145, 0, 0.527);
+}
+option#priority3 {
+    background: rgba(157, 255, 0, 0.527);
+}
+option#priority4 {
+    background: rgba(0, 102, 255, 0.527);
 }

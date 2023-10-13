@@ -13,6 +13,10 @@ const title = document.getElementById("title");
 const description = document.getElementById("description");
 const dueDate = document.getElementById("dueDate");
 const priority = document.getElementById("priority");
+const priority1 = document.getElementById("priority1");
+const priority2 = document.getElementById("priority2");
+const priority3 = document.getElementById("priority3");
+const priority4 = document.getElementById("priority4");
 const notes = document.getElementById("notes");
 
 getCurrentDate()
@@ -28,11 +32,32 @@ confirmBtn.addEventListener("click", function (event) {
     const notesText = document.querySelector("#notesText-" + count);
     event.preventDefault();
     dialog.close();
-    titleText.textContent = title.value;
-    descriptionText.textContent = description.value;
-    dueDateText.textContent = dueDate.value;
-    priorityText.textContent = priority.value;
-    notesText.textContent = notes.value;
+    titleText.textContent = "⁍Title:" + title.value;
+
+
+    descriptionText.textContent = "Description:" + description.value;
+
+
+    dueDateText.textContent = "dueDate:" + dueDate.value;
+
+
+    priorityText.textContent = "Priority:" + priority.value;
+
+    notesText.textContent = "Notes:" + notes.value;
+
+    if(priority1.checked) {
+        priorityText.textContent = priority1.value;
+        priorityText.style.background="background: rgba(255, 0, 0, 0.527)"
+    } else if (priority2.checked) {
+        priorityText.textContent = priority2.value;
+        priorityText.style.background="background: rgba(255, 145, 0, 0.527)"
+    } else if (priority3.checked) {
+        priorityText.textContent = priority3.value;
+        priorityText.style.background="background: rgba(157, 255, 0, 0.527)"
+    } else if (priority4.checked) {
+        priorityText.textContent = priority4.value;
+        priorityText.style.background="background: rgba(0, 102, 255, 0.527)"
+    }
 });
 
 confirmBtn.onclick = function () {
@@ -42,7 +67,7 @@ confirmBtn.onclick = function () {
         title.value = "";
         description.value = "";
         dueDate.value = "";
-        priority.value = "priority1";
+        priority.value = false;
         notes.value = "";
     }
 }
