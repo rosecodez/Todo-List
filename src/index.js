@@ -2,6 +2,7 @@ import './style.css';
 import { createToDo } from "./AppLogic/CreateToDo.js";
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
+import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -19,9 +20,10 @@ const priority3 = document.getElementById("priority3");
 const priority4 = document.getElementById("priority4");
 const notes = document.getElementById("notes");
 
-getCurrentDate()
+getCurrentDate();
 addTaskBtn.addEventListener("click", () => {
     dialog.showModal();
+    disablePreviousDate();
 });
 confirmBtn.addEventListener("click", function (event) {
     createItem(count)
