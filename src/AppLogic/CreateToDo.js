@@ -27,7 +27,7 @@ export function createItem(num) {
     let titleText = document.createElement("div");
     task.appendChild(titleText);
     titleText.setAttribute("id", "titleText-"+num);
-    
+
     let descriptionText = document.createElement("div");
     task.appendChild(descriptionText);
     descriptionText.setAttribute("id", "descriptionText-"+num);
@@ -53,5 +53,27 @@ export function createItem(num) {
 
     deleteBtn.addEventListener("click", function () {
         task.remove(); 
+    })
+
+    let changePriorityBtn = document.createElement("button");
+    task.appendChild(changePriorityBtn);
+    changePriorityBtn.setAttribute("id", "changePriority-" +num);
+    changePriorityBtn.textContent = "Priority";
+
+    document.getElementById("changePriority-" +num).style.padding = "6px 8px";
+
+    changePriorityBtn.addEventListener("click", function () {
+        
+    })
+
+    let editItemBtn = document.createElement("button");
+    task.appendChild(editItemBtn);
+    editItemBtn.setAttribute("id", "editItemBtn-" +num);
+    editItemBtn.textContent = "Edit";
+
+    document.getElementById("editItemBtn-" +num).style.padding = "6px 8px";
+    editItemBtn.addEventListener("click", function() {
+        dialog.showModal();
+        
     })
 }

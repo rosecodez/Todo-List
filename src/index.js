@@ -24,52 +24,47 @@ getCurrentDate();
 addTaskBtn.addEventListener("click", () => {
     dialog.showModal();
     disablePreviousDate();
+    title.value = "";
+        description.value = "";
+        dueDate.value = "";
+        priority.value = false;
+        notes.value = "";
 });
+
 confirmBtn.addEventListener("click", function (event) {
-    createItem(count)
+    createItem(count);
     const titleText = document.querySelector("#titleText-" + count);
     const descriptionText = document.querySelector("#descriptionText-" + count);
     const dueDateText = document.querySelector("#dueDateText-" + count);
     const priorityText = document.querySelector("#priorityText-" + count);
     const notesText = document.querySelector("#notesText-" + count);
+
     event.preventDefault();
     dialog.close();
-    titleText.textContent = "⁍Title:" + title.value;
+    
+    titleText.textContent = "⁍Title: " + title.value;
+    descriptionText.textContent = "Description: " + description.value;
 
+    dueDateText.textContent = "dueDate: " + dueDate.value;
 
-    descriptionText.textContent = "Description:" + description.value;
+    let input = document.createElement("input");
+    input.setAttribute("type", "date");
+    input.setAttribute("id", "dateInput");
+    input.setAttribute("value", "");
+    document.querySelector("#dueDateText-" + count).appendChild(input);
+    input.style.visibility = "hidden";
 
-
-    dueDateText.textContent = "dueDate:" + dueDate.value;
-
-
-    priorityText.textContent = "Priority:" + priority.value;
-
-    notesText.textContent = "Notes:" + notes.value;
+    priorityText.textContent = "Priority: " + priority.value;
+    notesText.textContent = "Notes: " + notes.value;
 
     if(priority1.checked) {
         priorityText.textContent = priority1.value;
-        priorityText.style.background="background: rgba(255, 0, 0, 0.527)"
     } else if (priority2.checked) {
         priorityText.textContent = priority2.value;
-        priorityText.style.background="background: rgba(255, 145, 0, 0.527)"
     } else if (priority3.checked) {
         priorityText.textContent = priority3.value;
-        priorityText.style.background="background: rgba(157, 255, 0, 0.527)"
     } else if (priority4.checked) {
         priorityText.textContent = priority4.value;
-        priorityText.style.background="background: rgba(0, 102, 255, 0.527)"
     }
-});
-
-confirmBtn.onclick = function () {
     count++;
-    console.log(count);
-    if (count <=2) {
-        title.value = "";
-        description.value = "";
-        dueDate.value = "";
-        priority.value = false;
-        notes.value = "";
-    }
-}
+});
