@@ -47,7 +47,6 @@ export function createItem(num) {
     task.appendChild(deleteBtn);
     deleteBtn.setAttribute("id", "delete-" +num);
     deleteBtn.textContent = "Delete";
-
     document.getElementById("delete-" +num).style.padding = "6px 8px";
 
     deleteBtn.addEventListener("click", function () {
@@ -57,23 +56,15 @@ export function createItem(num) {
     let editItemBtn = document.createElement("button");
     task.appendChild(editItemBtn);
     editItemBtn.setAttribute("id", "editItemBtn-" +num);
-    editItemBtn.textContent = "Edit";
+    editItemBtn.textContent = "editItemBtn";
     document.getElementById("editItemBtn-" +num).style.padding = "6px 8px";
 
-    editItemBtn.addEventListener("click", () => {
-        dialog.showModal();;
-        const confirm = document.getElementById("confirm");
-        confirm.style.display = "none";
-        const confirmEdit = document.getElementById("confirmEdit");
-        confirmEdit.style.display = "flex";
-    });
+    let confirmEdit = document.createElement("button");
+    const buttons = document.getElementById("buttons");
+    buttons.appendChild(confirmEdit);
+    confirmEdit.setAttribute("id", "confirmEdit-" +num);
+    confirmEdit.textContent = "confirmEdit";
 
-    console.log(confirmEdit)
-    confirmEdit.addEventListener("click", () => {
-        titleText.textContent = "⁍Title: " + title.value;
-        descriptionText.textContent = "Description: " + description.value;
-        dueDateText.textContent = "dueDate: " + dueDate.value;
-        priorityText.textContent = "Priority: " + priority.value;
-        notesText.textContent = "Notes: " + notes.value;
-    })
+    document.getElementById("confirmEdit-" +num).style.padding = "6px 8px";
+    document.getElementById("confirmEdit-" +num).style.display = "none";
 }
