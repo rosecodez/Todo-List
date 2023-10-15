@@ -53,16 +53,7 @@ export function createItem(num) {
     deleteBtn.addEventListener("click", function () {
         task.remove(); 
     })
-    let changePriorityBtn = document.createElement("button");
-    task.appendChild(changePriorityBtn);
-    changePriorityBtn.setAttribute("id", "changePriority-" +num);
-    changePriorityBtn.textContent = "Priority";
 
-    document.getElementById("changePriority-" +num).style.padding = "6px 8px";
-
-    changePriorityBtn.addEventListener("click", function () {
-        
-    })
     let editItemBtn = document.createElement("button");
     task.appendChild(editItemBtn);
     editItemBtn.setAttribute("id", "editItemBtn-" +num);
@@ -70,12 +61,14 @@ export function createItem(num) {
     document.getElementById("editItemBtn-" +num).style.padding = "6px 8px";
 
     editItemBtn.addEventListener("click", () => {
-    dialog.showModal();;
-    const confirm = document.getElementById("confirm");
-    confirm.style.display = "none";
-    const confirmEdit = document.getElementById("confirmEdit");
-    confirmEdit.style.display = "flex";
+        dialog.showModal();;
+        const confirm = document.getElementById("confirm");
+        confirm.style.display = "none";
+        const confirmEdit = document.getElementById("confirmEdit");
+        confirmEdit.style.display = "flex";
     });
+
+    console.log(confirmEdit)
     confirmEdit.addEventListener("click", () => {
         titleText.textContent = "⁍Title: " + title.value;
         descriptionText.textContent = "Description: " + description.value;
