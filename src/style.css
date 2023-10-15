@@ -90,6 +90,10 @@ form {
     flex-direction: column;
     height: 663px;
 }
+.buttons {
+    display: flex;
+    flex-direction: row-reverse;
+}
 .buttons, #checklist {
     padding-top: 20px;
 }
@@ -132,4 +136,6 @@ option#priority3 {
 option#priority4 {
     background: rgba(0, 102, 255, 0.527);
 }
-
+button#confirmEdit {
+    display: none;
+}

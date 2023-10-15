@@ -3,11 +3,13 @@ import { createToDo } from "./AppLogic/CreateToDo.js";
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
+
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
 const dialog = document.querySelector("dialog");
 const confirmBtn = document.getElementById("confirm");
+const confirmEdit = document.getElementById("confirmEdit");
 const cancelBtn = document.getElementById("cancel");
 const tasks = document.getElementById("tasks");
 const title = document.getElementById("title");
@@ -44,16 +46,7 @@ confirmBtn.addEventListener("click", function (event) {
     
     titleText.textContent = "⁍Title: " + title.value;
     descriptionText.textContent = "Description: " + description.value;
-
     dueDateText.textContent = "dueDate: " + dueDate.value;
-
-    let input = document.createElement("input");
-    input.setAttribute("type", "date");
-    input.setAttribute("id", "dateInput");
-    input.setAttribute("value", "");
-    document.querySelector("#dueDateText-" + count).appendChild(input);
-    input.style.visibility = "hidden";
-
     priorityText.textContent = "Priority: " + priority.value;
     notesText.textContent = "Notes: " + notes.value;
 
@@ -67,4 +60,5 @@ confirmBtn.addEventListener("click", function (event) {
         priorityText.textContent = priority4.value;
     }
     count++;
+
 });

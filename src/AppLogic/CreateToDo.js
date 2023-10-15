@@ -14,11 +14,10 @@ export function createToDo () {
         }
     }
     const item1 = new Item("Study", "Study 2 hours", "Infinite", 2, "", "" );
-    console.log(item1); 
+    //haven't used this code block yet *
 }
 
 export function createItem(num) {
-    
     const tasks = document.getElementById("tasks");
     let task = document.createElement("div");
     tasks.appendChild(task);
@@ -54,7 +53,6 @@ export function createItem(num) {
     deleteBtn.addEventListener("click", function () {
         task.remove(); 
     })
-
     let changePriorityBtn = document.createElement("button");
     task.appendChild(changePriorityBtn);
     changePriorityBtn.setAttribute("id", "changePriority-" +num);
@@ -65,15 +63,24 @@ export function createItem(num) {
     changePriorityBtn.addEventListener("click", function () {
         
     })
-
     let editItemBtn = document.createElement("button");
     task.appendChild(editItemBtn);
     editItemBtn.setAttribute("id", "editItemBtn-" +num);
     editItemBtn.textContent = "Edit";
-
     document.getElementById("editItemBtn-" +num).style.padding = "6px 8px";
-    editItemBtn.addEventListener("click", function() {
-        dialog.showModal();
-        
+
+    editItemBtn.addEventListener("click", () => {
+    dialog.showModal();;
+    const confirm = document.getElementById("confirm");
+    confirm.style.display = "none";
+    const confirmEdit = document.getElementById("confirmEdit");
+    confirmEdit.style.display = "flex";
+    });
+    confirmEdit.addEventListener("click", () => {
+        titleText.textContent = "⁍Title: " + title.value;
+        descriptionText.textContent = "Description: " + description.value;
+        dueDateText.textContent = "dueDate: " + dueDate.value;
+        priorityText.textContent = "Priority: " + priority.value;
+        notesText.textContent = "Notes: " + notes.value;
     })
 }
