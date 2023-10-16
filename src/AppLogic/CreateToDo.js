@@ -70,16 +70,20 @@ export function createItem(num) {
     document.getElementById("confirmEditBtn-" +num).style.padding = "6px 8px";
     document.getElementById("confirmEditBtn-" +num).style.display = "none";
 
+    editItemBtn.querySelector("#editItemBtn-" + count);
     editItemBtn.addEventListener("click", () => {
-        editItemBtn.querySelector("#editItemBtn-" + count);
-        dialog.showModal();;
+        dialog.showModal();
         const confirm = document.getElementById("confirm");
         confirm.style.display = "none";
-        editItemBtn.style.display = "flex";
         document.querySelector("#confirmEditBtn-" + count).style.display = "flex";
     });
 
     confirmEditBtn.querySelector("#confirmEditBtn-" + count);
+    console.log(titleText)
+    console.log(descriptionText)
+    console.log(dueDateText)
+    console.log(priorityText)
+    console.log(notesText)
     confirmEditBtn.addEventListener("click", () => {
         titleText.textContent = "⁍Title: " + title.value;
         descriptionText.textContent = "Description: " + description.value;
