@@ -69,29 +69,24 @@ export function createItem(num) {
 
     document.getElementById("confirmEditBtn-" +num).style.padding = "6px 8px";
     document.getElementById("confirmEditBtn-" +num).style.display = "none";
-
-    editItemBtn.querySelector("#editItemBtn-" + count);
+    
+    
+    
     editItemBtn.addEventListener("click", () => {
         dialog.showModal();
+        editItemBtn.querySelector("#editItemBtn-" + count);
         const confirm = document.getElementById("confirm");
         confirm.style.display = "none";
         document.querySelector("#confirmEditBtn-" + count).style.display = "flex";
     });
 
     confirmEditBtn.querySelector("#confirmEditBtn-" + count);
-    console.log(titleText)
-    console.log(descriptionText)
-    console.log(dueDateText)
-    console.log(priorityText)
-    console.log(notesText)
     confirmEditBtn.addEventListener("click", () => {
         titleText.textContent = "⁍Title: " + title.value;
         descriptionText.textContent = "Description: " + description.value;
         dueDateText.textContent = "dueDate: " + dueDate.value;
         priorityText.textContent = "Priority: " + priority.value;
         notesText.textContent = "Notes: " + notes.value;
+        dialog.close();
     })
-    console.log(editItemBtn);
-    console.log(confirmEditBtn);
-    console.log("Count in create to do is: " + count);
 }

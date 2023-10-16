@@ -22,11 +22,22 @@ const priority3 = document.getElementById("priority3");
 const priority4 = document.getElementById("priority4");
 const notes = document.getElementById("notes");
 
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.currentTarget);
+  console.log(Object.fromEntries(formData));
+});
+
+cancelBtn.addEventListener("click", () => {
+    dialog.close();
+})
 getCurrentDate();
 addTaskBtn.addEventListener("click", () => {
     dialog.showModal();
     disablePreviousDate();
-
+    confirmBtn.style.display = "flex";
     title.value = "";
     description.value = "";
     dueDate.value = "";
@@ -37,7 +48,7 @@ addTaskBtn.addEventListener("click", () => {
     console.log(count);
 });
 
-confirmBtn.addEventListener("click", function (event) {
+confirmBtn.addEventListener("click", function () {
     createItem(count);
     const titleText = document.querySelector("#titleText-" + count);
     const descriptionText = document.querySelector("#descriptionText-" + count);
@@ -45,7 +56,6 @@ confirmBtn.addEventListener("click", function (event) {
     const priorityText = document.querySelector("#priorityText-" + count);
     const notesText = document.querySelector("#notesText-" + count);
 
-    event.preventDefault();
     dialog.close();
     
     titleText.textContent = "⁍Title: " + title.value;
