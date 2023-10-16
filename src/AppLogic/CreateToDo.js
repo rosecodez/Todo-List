@@ -1,3 +1,5 @@
+import { count } from "../index.js"
+
 export function createToDo () {
     class Item {
         constructor(title, description, dueDate, priority, notes, checklist) {
@@ -59,12 +61,33 @@ export function createItem(num) {
     editItemBtn.textContent = "editItemBtn";
     document.getElementById("editItemBtn-" +num).style.padding = "6px 8px";
 
-    let confirmEdit = document.createElement("button");
+    let confirmEditBtn = document.createElement("button");
     const buttons = document.getElementById("buttons");
-    buttons.appendChild(confirmEdit);
-    confirmEdit.setAttribute("id", "confirmEdit-" +num);
-    confirmEdit.textContent = "confirmEdit";
+    buttons.appendChild(confirmEditBtn);
+    confirmEditBtn.setAttribute("id", "confirmEditBtn-" +num);
+    confirmEditBtn.textContent = "confirmEditBtn";
 
-    document.getElementById("confirmEdit-" +num).style.padding = "6px 8px";
-    document.getElementById("confirmEdit-" +num).style.display = "none";
+    document.getElementById("confirmEditBtn-" +num).style.padding = "6px 8px";
+    document.getElementById("confirmEditBtn-" +num).style.display = "none";
+
+    editItemBtn.addEventListener("click", () => {
+        editItemBtn.querySelector("#editItemBtn-" + count);
+        dialog.showModal();;
+        const confirm = document.getElementById("confirm");
+        confirm.style.display = "none";
+        editItemBtn.style.display = "flex";
+        document.querySelector("#confirmEditBtn-" + count).style.display = "flex";
+    });
+
+    confirmEditBtn.querySelector("#confirmEditBtn-" + count);
+    confirmEditBtn.addEventListener("click", () => {
+        titleText.textContent = "⁍Title: " + title.value;
+        descriptionText.textContent = "Description: " + description.value;
+        dueDateText.textContent = "dueDate: " + dueDate.value;
+        priorityText.textContent = "Priority: " + priority.value;
+        notesText.textContent = "Notes: " + notes.value;
+    })
+    console.log(editItemBtn);
+    console.log(confirmEditBtn);
+    console.log("Count in create to do is: " + count);
 }

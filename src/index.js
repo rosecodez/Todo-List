@@ -44,8 +44,6 @@ confirmBtn.addEventListener("click", function (event) {
     const dueDateText = document.querySelector("#dueDateText-" + count);
     const priorityText = document.querySelector("#priorityText-" + count);
     const notesText = document.querySelector("#notesText-" + count);
-    const editItemBtn = document.querySelector("#editItemBtn-" + count);
-    const confirmEdit = document.querySelector("#confirmEdit-" + count);
 
     event.preventDefault();
     dialog.close();
@@ -55,20 +53,6 @@ confirmBtn.addEventListener("click", function (event) {
     dueDateText.textContent = "dueDate: " + dueDate.value;
     priorityText.textContent = "Priority: " + priority.value;
     notesText.textContent = "Notes: " + notes.value;
-    editItemBtn.addEventListener("click", () => {
-        dialog.showModal();;
-        const confirm = document.getElementById("confirm");
-        confirm.style.display = "none";
-        confirmEdit.style.display = "flex";
-    });
-
-    confirmEdit.addEventListener("click", () => {
-        titleText.textContent = "⁍Title: " + title.value;
-        descriptionText.textContent = "Description: " + description.value;
-        dueDateText.textContent = "dueDate: " + dueDate.value;
-        priorityText.textContent = "Priority: " + priority.value;
-        notesText.textContent = "Notes: " + notes.value;
-    })
 
     if(priority1.checked) {
         priorityText.textContent = priority1.value;
@@ -79,4 +63,6 @@ confirmBtn.addEventListener("click", function (event) {
     } else if (priority4.checked) {
         priorityText.textContent = priority4.value;
     }
+    
 });
+export { count }
