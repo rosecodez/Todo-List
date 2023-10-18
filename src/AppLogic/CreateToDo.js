@@ -69,8 +69,7 @@ export function createItem(num) {
 
     document.getElementById("confirmEditBtn-" +num).style.padding = "6px 8px";
     document.getElementById("confirmEditBtn-" +num).style.display = "none";
-    
-    
+    document.getElementById("confirmEditBtn-" +num).style.alignItems = "center";
     
     editItemBtn.addEventListener("click", () => {
         dialog.showModal();
@@ -88,5 +87,6 @@ export function createItem(num) {
         priorityText.textContent = "Priority: " + priority.value;
         notesText.textContent = "Notes: " + notes.value;
         dialog.close();
+        document.getElementById("confirm-").style.display = "none";
     })
 }
