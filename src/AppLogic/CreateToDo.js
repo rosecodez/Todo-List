@@ -1,7 +1,6 @@
-import { de } from "date-fns/locale";
 import { count } from "../index.js"
 import { createDeleteBtn } from "./DeleteToDo.js";
-import { deleteBtn } from "./DeleteToDo.js";
+
 export function createToDo () {
     class Item {
         constructor(title, description, dueDate, priority, notes, checklist) {
@@ -20,21 +19,24 @@ export function createToDo () {
     const item1 = new Item("Study", "Study 2 hours", "Infinite", 2, "", "" );
     //haven't used this code block yet *
 }
+
 export function createTask() {
     let task = document.createElement("div");
     return task
 }
 let task = createTask();
+
 export { task }
+
 export function createItem(num) {
+    
     let task = createTask();
     const tasks = document.getElementById("tasks");
     tasks.appendChild(task);
     task.setAttribute("id", "task"+num);
 
+    let deleteBtn = createDeleteBtn();
     task.appendChild(deleteBtn);
-    deleteBtn.setAttribute("id", "deleteBtn-" +num);
-    document.getElementById("deleteBtn-" +num).style.padding = "6px 8px";
 
     let titleText = document.createElement("div");
     task.appendChild(titleText);

@@ -2,7 +2,7 @@ import './style.css';
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
-import { createDeleteBtn } from "./AppLogic/DeleteToDo.js"
+
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -71,5 +71,5 @@ confirmBtn.addEventListener("click", function () {
         priorityText.textContent = priority4.value;
     }
 });
-createDeleteBtn();
+
 export { count };
