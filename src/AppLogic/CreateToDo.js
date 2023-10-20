@@ -1,5 +1,7 @@
-import { count } from "../index.js"
+import { count } from "../index.js";
 import { createDeleteBtn } from "./DeleteToDo.js";
+import { editToDo } from "./EditToDo.js";
+import { confirmEditToDo } from "./EditToDo.js";
 
 export function createToDo () {
     class Item {
@@ -29,14 +31,10 @@ let task = createTask();
 export { task }
 
 export function createItem(num) {
-    
     let task = createTask();
     const tasks = document.getElementById("tasks");
     tasks.appendChild(task);
     task.setAttribute("id", "task"+num);
-
-    let deleteBtn = createDeleteBtn();
-    task.appendChild(deleteBtn);
 
     let titleText = document.createElement("div");
     task.appendChild(titleText);
@@ -58,38 +56,13 @@ export function createItem(num) {
     task.appendChild(notesText);
     notesText.setAttribute("id", "notesText-"+num);
 
-    let editItemBtn = document.createElement("button");
+    let editItemBtn = editToDo();
     task.appendChild(editItemBtn);
-    editItemBtn.setAttribute("id", "editItemBtn-" +num);
-    editItemBtn.textContent = "editItemBtn";
-    document.getElementById("editItemBtn-" +num).style.padding = "6px 8px";
+    
+    let deleteBtn = createDeleteBtn();
+    task.appendChild(deleteBtn);
 
-    let confirmEditBtn = document.createElement("button");
+    let confirmEditBtn = confirmEditToDo();
     const buttons = document.getElementById("buttons");
     buttons.appendChild(confirmEditBtn);
-    confirmEditBtn.setAttribute("id", "confirmEditBtn-" +num);
-    confirmEditBtn.textContent = "confirmEditBtn";
-
-    document.getElementById("confirmEditBtn-" +num).style.padding = "6px 8px";
-    document.getElementById("confirmEditBtn-" +num).style.display = "none";
-    document.getElementById("confirmEditBtn-" +num).style.alignItems = "center";
-    
-    editItemBtn.addEventListener("click", () => {
-        dialog.showModal();
-        editItemBtn.querySelector("#editItemBtn-" + count);
-        const confirm = document.getElementById("confirm");
-        confirm.style.display = "none";
-        document.querySelector("#confirmEditBtn-" + count).style.display = "flex";
-    });
-
-    confirmEditBtn.querySelector("#confirmEditBtn-" + count);
-    confirmEditBtn.addEventListener("click", () => {
-        titleText.textContent = "⁍Title: " + title.value;
-        descriptionText.textContent = "Description: " + description.value;
-        dueDateText.textContent = "dueDate: " + dueDate.value;
-        priorityText.textContent = "Priority: " + priority.value;
-        notesText.textContent = "Notes: " + notes.value;
-        dialog.close();
-        document.getElementById("confirm-").style.display = "none";
-    })
 }

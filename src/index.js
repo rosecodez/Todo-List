@@ -2,6 +2,8 @@ import './style.css';
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
+import { add } from 'lodash';
+import { confirmEditToDo } from './AppLogic/EditToDo';
 
 let count = 0;
 
@@ -35,11 +37,13 @@ addTaskBtn.addEventListener("click", () => {
     dialog.showModal();
     disablePreviousDate();
     confirmBtn.style.display = "flex";
+    
     title.value = "";
     description.value = "";
     dueDate.value = "";
     priority.value = false;
     notes.value = "";
+
 
     count++;
     console.log(count);
@@ -52,7 +56,6 @@ confirmBtn.addEventListener("click", function () {
     const dueDateText = document.querySelector("#dueDateText-" + count);
     const priorityText = document.querySelector("#priorityText-" + count);
     const notesText = document.querySelector("#notesText-" + count);
-    const deleteBtn = document.querySelector("#deleteBtn-" + count);
     dialog.close();
     
     titleText.textContent = "⁍Title: " + title.value;
