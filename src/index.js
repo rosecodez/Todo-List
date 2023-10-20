@@ -1,9 +1,8 @@
 import './style.css';
-import { createToDo } from "./AppLogic/CreateToDo.js";
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
-
+import { createDeleteBtn } from "./AppLogic/DeleteToDo.js"
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -19,7 +18,7 @@ const priority2 = document.getElementById("priority2");
 const priority3 = document.getElementById("priority3");
 const priority4 = document.getElementById("priority4");
 const notes = document.getElementById("notes");
-
+const searchBtn = document.getElementById("searchBtn");
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
@@ -53,7 +52,7 @@ confirmBtn.addEventListener("click", function () {
     const dueDateText = document.querySelector("#dueDateText-" + count);
     const priorityText = document.querySelector("#priorityText-" + count);
     const notesText = document.querySelector("#notesText-" + count);
-
+    const deleteBtn = document.querySelector("#deleteBtn-" + count);
     dialog.close();
     
     titleText.textContent = "⁍Title: " + title.value;
@@ -71,6 +70,6 @@ confirmBtn.addEventListener("click", function () {
     } else if (priority4.checked) {
         priorityText.textContent = priority4.value;
     }
-    
 });
+createDeleteBtn();
 export { count };
