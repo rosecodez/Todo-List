@@ -4,7 +4,7 @@ export function createDeleteBtn() {
     deleteBtn.textContent = "Delete";
     deleteBtn.setAttribute("id", "deleteBtn-" +count);
     deleteBtn.style.padding = "6px 8px";
-    
+
     deleteBtn.addEventListener("click", function () {
         deleteBtn.parentElement.remove();
     })

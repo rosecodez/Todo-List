@@ -2,11 +2,10 @@ import './style.css';
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
-import { add } from 'lodash';
-import { confirmEditToDo } from './AppLogic/EditToDo';
 
 let count = 0;
-
+const coll = document.querySelector(".collapsible");
+export { coll }
 const addTaskBtn = document.getElementById("add-task");
 const dialog = document.querySelector("dialog");
 const confirmBtn = document.getElementById("confirm");
@@ -20,7 +19,6 @@ const priority2 = document.getElementById("priority2");
 const priority3 = document.getElementById("priority3");
 const priority4 = document.getElementById("priority4");
 const notes = document.getElementById("notes");
-const searchBtn = document.getElementById("searchBtn");
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
@@ -43,7 +41,6 @@ addTaskBtn.addEventListener("click", () => {
     dueDate.value = "";
     priority.value = false;
     notes.value = "";
-
 
     count++;
     console.log(count);
