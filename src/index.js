@@ -56,8 +56,7 @@ confirmBtn.addEventListener("click", function () {
     const dueDateText = document.querySelector("#dueDateText-" + count);
     const priorityText = document.querySelector("#priorityText-" + count);
     const notesText = document.querySelector("#notesText-" + count);
-
-
+    
     titleText.textContent = "⁍Title: " + title.value;
     descriptionText.textContent = "Description: " + description.value;
     dueDateText.textContent = "dueDate: " + dueDate.value;
