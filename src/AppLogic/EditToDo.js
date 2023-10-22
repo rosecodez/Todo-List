@@ -1,9 +1,11 @@
 import { count } from "../index.js"
+
 export function editToDo() {
     let editItemBtn = document.createElement("button");
     editItemBtn.textContent = "Edit";
     editItemBtn.setAttribute("id", "editItemBtn-" +count);
     editItemBtn.style.padding = "6px 8px";
+    editItemBtn.style.backgroundColor = "white";
 
     editItemBtn.querySelector("#editItemBtn-" + count);
     editItemBtn.addEventListener("click", () => {
@@ -15,6 +17,7 @@ export function editToDo() {
     });
     return editItemBtn
 }
+
 export function confirmEditToDo() {
     let confirmEditBtn = document.createElement("button");
     confirmEditBtn.setAttribute("id", "confirmEditBtn-" +count);

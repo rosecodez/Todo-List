@@ -1,8 +1,8 @@
-import { coll } from "../index.js";
 import { createDeleteBtn } from "./DeleteToDo.js";
 import { editToDo } from "./EditToDo.js";
 import { confirmEditToDo } from "./EditToDo.js";
-import { createCollapsibleBtn } from "./ViewAll.js";
+import { createExpandBtn } from "./ExpandToDo.js";
+
 export function createToDo () {
     class Item {
         constructor(title, description, dueDate, priority, notes, checklist) {
@@ -26,17 +26,17 @@ export function createTask() {
     let task = document.createElement("div");
     return task
 }
+
 let task = createTask();
 export { task }
+
 export function createItem(num) {
     const tasks = document.getElementById("tasks");
-    let collapsibleBtn = createCollapsibleBtn()
-    tasks.appendChild(collapsibleBtn);
-
+    
     let task = createTask();
     task.setAttribute("id", "task-"+num);
     task.setAttribute("class", "text");
-    collapsibleBtn.appendChild(task);
+    tasks.appendChild(task);
 
     let titleText = document.createElement("div");
     task.appendChild(titleText);
@@ -67,4 +67,7 @@ export function createItem(num) {
     let confirmEditBtn = confirmEditToDo();
     const buttons = document.getElementById("buttons");
     buttons.appendChild(confirmEditBtn);
+
+    let expandBtn = createExpandBtn();
+    task.appendChild(expandBtn);
 }

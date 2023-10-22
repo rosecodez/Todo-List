@@ -4,8 +4,7 @@ import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
 
 let count = 0;
-const coll = document.querySelector(".collapsible");
-export { coll }
+
 const addTaskBtn = document.getElementById("add-task");
 const dialog = document.querySelector("dialog");
 const confirmBtn = document.getElementById("confirm");
@@ -27,10 +26,8 @@ form.addEventListener("submit", (e) => {
   console.log(Object.fromEntries(formData));
 });
 
-cancelBtn.addEventListener("click", () => {
-    dialog.close();
-})
 getCurrentDate();
+
 addTaskBtn.addEventListener("click", () => {
     dialog.showModal();
     disablePreviousDate();
@@ -46,15 +43,21 @@ addTaskBtn.addEventListener("click", () => {
     console.log(count);
 });
 
+cancelBtn.addEventListener("click", () => {
+    dialog.close();
+});
+
 confirmBtn.addEventListener("click", function () {
     createItem(count);
+    dialog.close();
+    
     const titleText = document.querySelector("#titleText-" + count);
     const descriptionText = document.querySelector("#descriptionText-" + count);
     const dueDateText = document.querySelector("#dueDateText-" + count);
     const priorityText = document.querySelector("#priorityText-" + count);
     const notesText = document.querySelector("#notesText-" + count);
-    dialog.close();
-    
+
+
     titleText.textContent = "⁍Title: " + title.value;
     descriptionText.textContent = "Description: " + description.value;
     dueDateText.textContent = "dueDate: " + dueDate.value;
@@ -70,6 +73,9 @@ confirmBtn.addEventListener("click", function () {
     } else if (priority4.checked) {
         priorityText.textContent = priority4.value;
     }
-});
 
+    descriptionText.style.display = "none";
+    priorityText.style.display = "none";
+    notesText.style.display = "none";
+});
 export { count };
