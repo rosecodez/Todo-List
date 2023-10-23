@@ -38,6 +38,14 @@ export function createItem(num) {
     task.setAttribute("class", "text");
     tasks.appendChild(task);
 
+    let deleteBtn = createDeleteBtn();
+    task.appendChild(deleteBtn);
+    deleteBtn.style.width = "60px";
+
+    let editItemBtn = editToDo();
+    task.appendChild(editItemBtn);
+    editItemBtn.style.width = "60px";
+
     let bottom = document.createElement("div");
     bottom.setAttribute("id", "bottom-"+num);
     task.appendChild(bottom);
@@ -60,7 +68,6 @@ export function createItem(num) {
     bottom.appendChild(descriptionText);
     descriptionText.setAttribute("id", "descriptionText-"+num);
 
-
     let priorityText = document.createElement("div");
     bottom.appendChild(priorityText);
     priorityText.setAttribute("id", "priorityText-"+num);
@@ -68,16 +75,6 @@ export function createItem(num) {
     let notesText = document.createElement("div");
     bottom.appendChild(notesText);
     notesText.setAttribute("id", "notesText-"+num);
-
-    let taskBtns = document.createElement("div");
-    task.appendChild(taskBtns)
-    taskBtns.setAttribute("id", "taskBtns");
-
-    let editItemBtn = editToDo();
-    taskBtns.appendChild(editItemBtn);
-    
-    let deleteBtn = createDeleteBtn();
-    taskBtns.appendChild(deleteBtn);
 
     let confirmEditBtn = confirmEditToDo();
     const buttons = document.getElementById("buttons");

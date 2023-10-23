@@ -2,6 +2,7 @@ import './style.css';
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
+import { createExpandBtn } from './AppLogic/ExpandToDo';
 
 let count = 0;
 
@@ -65,6 +66,7 @@ confirmBtn.addEventListener("click", function () {
 
     if(priority1.checked) {
         priorityText.textContent = priority1.value;
+        priorityText.style.background
     } else if (priority2.checked) {
         priorityText.textContent = priority2.value;
     } else if (priority3.checked) {
