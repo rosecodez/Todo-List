@@ -32,42 +32,57 @@ export { task }
 
 export function createItem(num) {
     const tasks = document.getElementById("tasks");
-    
+
     let task = createTask();
     task.setAttribute("id", "task-"+num);
     task.setAttribute("class", "text");
     tasks.appendChild(task);
 
+    let bottom = document.createElement("div");
+    bottom.setAttribute("id", "bottom-"+num);
+    task.appendChild(bottom);
+
+    let top = document.createElement("div");
+    top.setAttribute("id", "top-"+num);
+    task.appendChild(top);
+    top.style.backgroundColor = "#e11d4800";
+    bottom.style.backgroundColor = "#e11d4800";
+    
     let titleText = document.createElement("div");
-    task.appendChild(titleText);
+    top.appendChild(titleText);
     titleText.setAttribute("id", "titleText-"+num);
 
-    let descriptionText = document.createElement("div");
-    task.appendChild(descriptionText);
-    descriptionText.setAttribute("id", "descriptionText-"+num);
-
     let dueDateText = document.createElement("div");
-    task.appendChild(dueDateText);
+    top.appendChild(dueDateText);
     dueDateText.setAttribute("id", "dueDateText-"+num);
 
+    let descriptionText = document.createElement("div");
+    bottom.appendChild(descriptionText);
+    descriptionText.setAttribute("id", "descriptionText-"+num);
+
+
     let priorityText = document.createElement("div");
-    task.appendChild(priorityText);
+    bottom.appendChild(priorityText);
     priorityText.setAttribute("id", "priorityText-"+num);
 
     let notesText = document.createElement("div");
-    task.appendChild(notesText);
+    bottom.appendChild(notesText);
     notesText.setAttribute("id", "notesText-"+num);
 
+    let taskBtns = document.createElement("div");
+    task.appendChild(taskBtns)
+    taskBtns.setAttribute("id", "taskBtns");
+
     let editItemBtn = editToDo();
-    task.appendChild(editItemBtn);
+    taskBtns.appendChild(editItemBtn);
     
     let deleteBtn = createDeleteBtn();
-    task.appendChild(deleteBtn);
+    taskBtns.appendChild(deleteBtn);
 
     let confirmEditBtn = confirmEditToDo();
     const buttons = document.getElementById("buttons");
     buttons.appendChild(confirmEditBtn);
-
+    
     let expandBtn = createExpandBtn();
     task.appendChild(expandBtn);
 }
