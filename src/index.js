@@ -2,7 +2,7 @@ import './style.css';
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
-import { createExpandBtn } from './AppLogic/ExpandToDo';
+import { viewEach } from "./AppLogic/ViewEach.js";
 
 let count = 0;
 
@@ -20,6 +20,7 @@ const priority3 = document.getElementById("priority3");
 const priority4 = document.getElementById("priority4");
 const notes = document.getElementById("notes");
 const form = document.querySelector("form");
+const viewAllBtn = document.getElementById("view-all");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -32,6 +33,7 @@ getCurrentDate();
 addTaskBtn.addEventListener("click", () => {
     dialog.showModal();
     disablePreviousDate();
+    
     confirmBtn.style.display = "flex";
     
     title.value = "";
@@ -78,5 +80,7 @@ confirmBtn.addEventListener("click", function () {
     descriptionText.style.display = "none";
     priorityText.style.display = "none";
     notesText.style.display = "none";
+    viewEach();
 });
+
 export { count };

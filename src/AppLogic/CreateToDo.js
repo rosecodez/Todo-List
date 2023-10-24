@@ -2,6 +2,7 @@ import { createDeleteBtn } from "./DeleteToDo.js";
 import { editToDo } from "./EditToDo.js";
 import { confirmEditToDo } from "./EditToDo.js";
 import { createExpandBtn } from "./ExpandToDo.js";
+import { setComplete } from "./SetComplete.js";
 
 export function createToDo () {
     class Item {
@@ -23,7 +24,7 @@ export function createToDo () {
 }
 
 export function createTask() {
-    let task = document.createElement("div");
+    let task = document.createElement("button");
     return task
 }
 
@@ -35,12 +36,16 @@ export function createItem(num) {
 
     let task = createTask();
     task.setAttribute("id", "task-"+num);
-    task.setAttribute("class", "text");
+    task.setAttribute("class", "tasks");
     tasks.appendChild(task);
 
     let deleteBtn = createDeleteBtn();
     task.appendChild(deleteBtn);
     deleteBtn.style.width = "60px";
+
+    let setCompleteBtn = setComplete();
+    task.appendChild(setCompleteBtn);
+    setCompleteBtn.style.width = "82px";
 
     let editItemBtn = editToDo();
     task.appendChild(editItemBtn);
