@@ -45,7 +45,7 @@ export function createItem(num) {
 
     let setCompleteBtn = setComplete();
     task.appendChild(setCompleteBtn);
-    setCompleteBtn.style.width = "82px";
+    setCompleteBtn.style.width = "34px";
 
     let editItemBtn = editToDo();
     task.appendChild(editItemBtn);

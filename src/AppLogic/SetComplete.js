@@ -1,18 +1,25 @@
 import { count } from "../index.js"
+import verify from "../Icons/check.png";
 
 export function setComplete() {
-    let setCompleteBtn = document.createElement("button");
-    setCompleteBtn.textContent = "Complete";
+    const setCompleteBtn = new Image();
+    setCompleteBtn.src = verify;
     setCompleteBtn.setAttribute("id", "setComplete-" +count);
     setCompleteBtn.style.padding = "6px 8px";
-    setCompleteBtn.style.backgroundColor = "white";
 
     const task = document.querySelector("#task-" + count);
-
+    
+    let setCompleteCount = 0;
     setCompleteBtn.addEventListener("click", function() {
-        setCompleteBtn.parentElement.remove();
-
-        console.log(task);
+        setCompleteCount++;
+        if(setCompleteCount % 2 == 0) {
+            console.log("verify count is: " + setCompleteCount);
+            task.style.backgroundColor = "#1de16d7a";
+        }
+        else {
+            console.log("verify count is: " + setCompleteCount);
+            task.style.backgroundColor = "#e11d487a";
+        }
     })
     return setCompleteBtn
 }

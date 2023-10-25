@@ -3,7 +3,7 @@ import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
 import { viewEach } from "./AppLogic/ViewEach.js";
-
+import { task } from "./AppLogic/CreateToDo.js";
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -35,7 +35,7 @@ addTaskBtn.addEventListener("click", () => {
     disablePreviousDate();
     
     confirmBtn.style.display = "flex";
-    
+    task.style.backgroundColor = "#1de1407a";
     title.value = "";
     description.value = "";
     dueDate.value = "";
@@ -80,7 +80,7 @@ confirmBtn.addEventListener("click", function () {
     descriptionText.style.display = "none";
     priorityText.style.display = "none";
     notesText.style.display = "none";
-    viewEach();
+
 });
 
 export { count };
