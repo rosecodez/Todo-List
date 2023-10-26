@@ -36,10 +36,27 @@ export function confirmEditToDo() {
     confirmEditBtn.querySelector("#confirmEditBtn-" + count);
     confirmEditBtn.addEventListener("click", () => {
         titleText.textContent = "⁍Title: " + title.value;
-        descriptionText.textContent = "Description: " + description.value;
         dueDateText.textContent = "dueDate: " + dueDate.value;
-        priorityText.textContent = "Priority: " + priority.value;
-        notesText.textContent = "Notes: " + notes.value;
+
+        if (description.value === "") {
+            descriptionText.textContent = "Description: none";
+        } else {
+            descriptionText.textContent = "Description: " + description.value;
+        }
+
+        if (priority.value === "") {
+            priorityText.textContent = "Description: none";
+        } else {
+            priorityText.textContent = "Description: " + priority.value;
+        }
+
+        if (notes.value === "") {
+            notesText.textContent = "Notes: none";
+        }
+        else {
+            notesText.textContent = "Notes: " + notes.value;
+        }
+        
         dialog.close();
         const confirmBtn = document.getElementById("confirm");
         confirmBtn.style.display = "none";
