@@ -2,8 +2,8 @@ import './style.css';
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
-import { viewEach } from "./AppLogic/ViewEach.js";
 import { task } from "./AppLogic/CreateToDo.js";
+import { remainingTime } from './AppLogic/remainingTime';
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -96,7 +96,7 @@ confirmBtn.addEventListener("click", function () {
     descriptionText.style.display = "none";
     priorityText.style.display = "none";
     notesText.style.display = "none";
-    viewEach()
+    remainingTime();
 });
 
 export { count };

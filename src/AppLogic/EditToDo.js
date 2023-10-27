@@ -1,5 +1,5 @@
 import { count } from "../index.js"
-
+import { remainingTime } from "./remainingTime.js";
 export function editToDo() {
     let editItemBtn = document.createElement("button");
     editItemBtn.textContent = "Edit";
@@ -60,6 +60,7 @@ export function confirmEditToDo() {
         dialog.close();
         const confirmBtn = document.getElementById("confirm");
         confirmBtn.style.display = "none";
+        remainingTime();
     })
     const addTaskBtn = document.getElementById("add-task");
     addTaskBtn.addEventListener("click", () => {
