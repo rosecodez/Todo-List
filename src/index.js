@@ -3,7 +3,8 @@ import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
 import { task } from "./AppLogic/CreateToDo.js";
-import { remainingTime } from './AppLogic/remainingTime';
+import { remainingTime } from './AppLogic/remainingTime.js';
+import { saveTasks } from "./localStorage/saveTasks.js";
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -30,6 +31,7 @@ form.addEventListener("submit", (e) => {
 
 getCurrentDate();
 
+
 addTaskBtn.addEventListener("click", () => {
     dialog.showModal();
     disablePreviousDate();
@@ -41,7 +43,7 @@ addTaskBtn.addEventListener("click", () => {
     dueDate.value = "";
     priority.value = false;
     notes.value = "";
-
+    
     count++;
     console.log(count);
 });
@@ -96,6 +98,7 @@ confirmBtn.addEventListener("click", function () {
     descriptionText.style.display = "none";
     priorityText.style.display = "none";
     notesText.style.display = "none";
+    saveTasks();
     remainingTime();
 });
 
