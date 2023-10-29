@@ -59,6 +59,10 @@ export function createItem(num) {
     top.setAttribute("id", "top-"+num);
     task.appendChild(top);
     top.style.backgroundColor = "#e11d4800";
+    top.style.display = "flex";
+    top.style.flexDirection = "column";
+    top.style.alignItems = "flex-start";
+
     bottom.style.backgroundColor = "#e11d4800";
     
     let titleText = document.createElement("div");
