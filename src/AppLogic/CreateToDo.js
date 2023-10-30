@@ -4,27 +4,8 @@ import { confirmEditToDo } from "./EditToDo.js";
 import { createExpandBtn } from "./ExpandToDo.js";
 import { setComplete } from "./SetComplete.js";
 
-export function createToDo () {
-    class Item {
-        constructor(title, description, dueDate, priority, notes, checklist) {
-            this.title = title;
-            this.description = description;
-            this.dueDate = dueDate;
-            this.priority = priority;
-            this.notes = notes;
-            this.checklist = checklist;
-        }
-        date() {
-            const date = newDate();
-            return date.getFullYear() - this.year;
-        }
-    }
-    const item1 = new Item("Study", "Study 2 hours", "Infinite", 2, "", "" );
-    //haven't used this code block yet *
-}
-
 export function createTask() {
-    let task = document.createElement("button");
+    let task = document.createElement("div");
     return task
 }
 

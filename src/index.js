@@ -1,10 +1,11 @@
 import './style.css';
+import { createToDo } from './AppLogic/CreateToDo.js';
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
 import { task } from "./AppLogic/CreateToDo.js";
 import { remainingTime } from './AppLogic/remainingTime.js';
-import { saveTasks } from "./localStorage/saveTasks.js";
+import { saveTasks } from "./localStorage/saveTasks";
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -26,11 +27,10 @@ const viewAllBtn = document.getElementById("view-all");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(e.currentTarget);
-  console.log(Object.fromEntries(formData));
+  // console.log(Object.fromEntries(formData));
 });
 
 getCurrentDate();
-
 
 addTaskBtn.addEventListener("click", () => {
     dialog.showModal();
@@ -45,17 +45,16 @@ addTaskBtn.addEventListener("click", () => {
     notes.value = "";
     
     count++;
-    console.log(count);
 });
 
 cancelBtn.addEventListener("click", () => {
     dialog.close();
+    count--;
 });
 
 confirmBtn.addEventListener("click", function () {
     createItem(count);
     dialog.close();
-    
     const titleText = document.querySelector("#titleText-" + count);
     const descriptionText = document.querySelector("#descriptionText-" + count);
     const dueDateText = document.querySelector("#dueDateText-" + count);
@@ -100,6 +99,18 @@ confirmBtn.addEventListener("click", function () {
     notesText.style.display = "none";
     saveTasks();
     remainingTime();
+
+    class Item {
+        constructor(title, description, dueDate, priority, notes) {
+            this.title = title;
+            this.description = description;
+            this.dueDate = dueDate;
+            this.priority = priority;
+            this.notes = notes;
+        }
+    }
+    const newItem = new Item(title.value, description.value,dueDate.value, priority.value, notes.value)
+    console.log(newItem)
 });
 
 export { count };

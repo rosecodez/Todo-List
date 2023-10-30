@@ -56,12 +56,25 @@ export function confirmEditToDo() {
         else {
             notesText.textContent = "Notes: " + notes.value;
         }
-        
+
+        class Item {
+            constructor(title, description, dueDate, priority, notes) {
+                this.title = title;
+                this.description = description;
+                this.dueDate = dueDate;
+                this.priority = priority;
+                this.notes = notes;
+            }
+        }
+        const newItem = new Item(title.value, description.value,dueDate.value, priority.value, notes.value)
+        console.log(newItem);
+
         dialog.close();
         const confirmBtn = document.getElementById("confirm");
         confirmBtn.style.display = "none";
         remainingTime();
     })
+    
     const addTaskBtn = document.getElementById("add-task");
     addTaskBtn.addEventListener("click", () => {
         confirmEditBtn.style.display = "none";
