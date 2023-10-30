@@ -6,6 +6,7 @@ import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
 import { task } from "./AppLogic/CreateToDo.js";
 import { remainingTime } from './AppLogic/remainingTime.js';
 import { saveTasks } from "./localStorage/saveTasks";
+import { searchForTasks } from './localStorage/searchForTasks';
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -51,20 +52,19 @@ cancelBtn.addEventListener("click", () => {
     dialog.close();
     count--;
 });
-function createNewItem() {
-    class Item {
-        constructor(title, description, dueDate, priority, notes) {
-            this.title = title;
-            this.description = description;
-            this.dueDate = dueDate;
-            this.priority = priority;
-            this.notes = notes;
-        }
+class Item {
+    constructor(title, description, dueDate, priority, notes) {
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.notes = notes;
     }
-    const newItem = new Item(title.value, description.value,dueDate.value, priority.value, notes.value);
-    console.log(newItem)
 }
-
+export function createNewItem() {
+    const newItem = new Item(title.value, description.value,dueDate.value, priority.value, notes.value);
+    return newItem;
+}
 confirmBtn.addEventListener("click", function () {
     createItem(count);
     dialog.close();
@@ -106,13 +106,12 @@ confirmBtn.addEventListener("click", function () {
     } else if (priority4.checked) {
         priorityText.textContent = priority4.value;
     }
-
     descriptionText.style.display = "none";
     priorityText.style.display = "none";
     notesText.style.display = "none";
     remainingTime();
-    createNewItem();
-    saveTasks();
 });
-
+let tasksArray = saveTasks();
+searchForTasks();
+export { tasksArray }
 export { count };
