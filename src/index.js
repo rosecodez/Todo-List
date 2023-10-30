@@ -51,6 +51,19 @@ cancelBtn.addEventListener("click", () => {
     dialog.close();
     count--;
 });
+function createNewItem() {
+    class Item {
+        constructor(title, description, dueDate, priority, notes) {
+            this.title = title;
+            this.description = description;
+            this.dueDate = dueDate;
+            this.priority = priority;
+            this.notes = notes;
+        }
+    }
+    const newItem = new Item(title.value, description.value,dueDate.value, priority.value, notes.value);
+    console.log(newItem)
+}
 
 confirmBtn.addEventListener("click", function () {
     createItem(count);
@@ -97,20 +110,9 @@ confirmBtn.addEventListener("click", function () {
     descriptionText.style.display = "none";
     priorityText.style.display = "none";
     notesText.style.display = "none";
-    saveTasks();
     remainingTime();
-
-    class Item {
-        constructor(title, description, dueDate, priority, notes) {
-            this.title = title;
-            this.description = description;
-            this.dueDate = dueDate;
-            this.priority = priority;
-            this.notes = notes;
-        }
-    }
-    const newItem = new Item(title.value, description.value,dueDate.value, priority.value, notes.value)
-    console.log(newItem)
+    createNewItem();
+    saveTasks();
 });
 
 export { count };
