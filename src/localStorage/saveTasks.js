@@ -5,10 +5,9 @@ export function saveTasks() {
     const confirmBtn = document.getElementById("confirm");
     confirmBtn.addEventListener("click", () => {
         let newItem = createNewItem();
-        console.log(newItem);
         tasksArray.push(newItem);
-        console.log(tasksArray);
-        localStorage.setItem('items', JSON.stringify(tasksArray));
+        console.log(newItem)
+
+        localStorage.setItem("items", JSON.stringify(newItem));
     });
-    
 }
