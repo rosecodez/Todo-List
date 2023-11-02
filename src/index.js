@@ -7,7 +7,6 @@ import { task } from "./AppLogic/CreateToDo.js";
 import { remainingTime } from './AppLogic/remainingTime.js';
 import { saveTasks } from "./localStorage/saveTasks";
 import { searchForTasks } from './localStorage/searchForTasks';
-
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -46,7 +45,7 @@ addTaskBtn.addEventListener("click", () => {
     priority.value = false;
     notes.value = "";
     
-    count++;let tasksArray = saveTasks();
+    count++;
 });
 
 cancelBtn.addEventListener("click", () => {
@@ -111,14 +110,11 @@ confirmBtn.addEventListener("click", function () {
     priorityText.style.display = "none";
     notesText.style.display = "none";
     remainingTime();
-});
-
-if ( localStorage.getItem("items") === null) {
-    console.log("local storage is empty");
-} else { 
-    console.log("local storage is not empty :)");
-    let arr = JSON.parse(localStorage.getItem("items"));
-    console.log(arr);
     
-}
+});
+let tasksArray = saveTasks();
+const tasks = document.getElementById("tasks");
+console.log(tasks);
+
+export { tasksArray }
 export { count };
