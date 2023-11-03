@@ -112,9 +112,12 @@ confirmBtn.addEventListener("click", function () {
     remainingTime();
     
 });
-let tasksArray = saveTasks();
+let items = saveTasks();
+let savedItems = JSON.parse (localStorage.getItem("items"));
 const tasks = document.getElementById("tasks");
-console.log(tasks);
-
+console.log(tasks)
+for (const element of savedItems) {
+    tasks.appendChild(element);
+}
 export { tasksArray }
 export { count };
