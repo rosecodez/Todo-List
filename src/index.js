@@ -64,6 +64,9 @@ export function createNewItem() {
     const newItem = new Item(title.value, description.value,dueDate.value, priority.value, notes.value);
     return newItem;
 }
+
+let items = [];
+
 confirmBtn.addEventListener("click", function () {
     createItem(count);
     dialog.close();
@@ -109,23 +112,40 @@ confirmBtn.addEventListener("click", function () {
     priorityText.style.display = "none";
     notesText.style.display = "none";
     remainingTime();
-    
-});
-
-let items = [];
-confirmBtn.addEventListener("click", () => {
     let newItem = createNewItem();
     items.push(newItem);
     localStorage.setItem('items', JSON.stringify(items));
     console.log(items);
 });
 
-let savedItems = JSON.parse (localStorage.getItem("items"));
-const tasks = document.getElementById("tasks");
-console.log("tasks: " + tasks);
-const json = JSON.stringify(savedItems)
-console.log(json)
-tasks.innerHTML = json;
 
+if (localStorage.length === 0) {
+    console.log("local storage is empty");
+} else {
+    console.log("local storage is not empty");
+    let savedItems = JSON.parse (localStorage.getItem("items"));
+    savedItems.forEach(element => {
+        createItem(count);
+        const titleText = document.querySelector("#titleText-" + count);
+        const descriptionText = document.querySelector("#descriptionText-" + count);
+        const dueDateText = document.querySelector("#dueDateText-" + count);
+        const priorityText = document.querySelector("#priorityText-" + count);
+        const notesText = document.querySelector("#notesText-" + count);
+        
+        titleText.textContent = "⁍Title: " + `${element.title}`;
+        descriptionText.textContent = "Description: " + `${element.description}`;
+        dueDateText.textContent = "dueDate: " + `${element.dueDate}`;
+        priorityText.textContent = "Priority: " + `${element.priority}`;
+        notesText.textContent = "Notes: " + `${element.notes}`;
+
+        descriptionText.style.display = "none";
+        priorityText.style.display = "none";
+        notesText.style.display = "none";
+        remainingTime();
+    });
+    let newArray = [];
+    newArray.push(element);
+    console.log(element);
+}
 
 export { count };

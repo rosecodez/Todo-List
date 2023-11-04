@@ -15,17 +15,13 @@ export function createExpandBtn() {
 
     expandBtn.addEventListener("click", function() {
         expandCount++
-        console.log("Expand Count is: " + expandCount)
-
         if(expandCount % 2 == 0) {
-            console.log("Even number");
             expandBtn.textContent = "↑";
             descriptionText.style.display = "none";
             priorityText.style.display = "none";
             notesText.style.display = "none";
         }
         else {
-            console.log("Odd number");
             expandBtn.textContent = "↓";
             descriptionText.style.display = "flex";
             priorityText.style.display = "flex";

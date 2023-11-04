@@ -67,7 +67,6 @@ export function confirmEditToDo() {
             }
         }
         const newItem = new Item(title.value, description.value,dueDate.value, priority.value, notes.value)
-        console.log(newItem);
 
         dialog.close();
         const confirmBtn = document.getElementById("confirm");
