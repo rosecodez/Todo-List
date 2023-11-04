@@ -5,7 +5,7 @@ import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
 import { task } from "./AppLogic/CreateToDo.js";
 import { remainingTime } from './AppLogic/remainingTime.js';
-import { saveTasks } from "./localStorage/saveTasks";
+
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -111,12 +111,21 @@ confirmBtn.addEventListener("click", function () {
     remainingTime();
     
 });
-let items = saveTasks();
+
+let items = [];
+confirmBtn.addEventListener("click", () => {
+    let newItem = createNewItem();
+    items.push(newItem);
+    localStorage.setItem('items', JSON.stringify(items));
+    console.log(items);
+});
+
 let savedItems = JSON.parse (localStorage.getItem("items"));
 const tasks = document.getElementById("tasks");
-console.log(tasks)
-for (const element of savedItems) {
-    tasks.appendChild(element);
-}
+console.log("tasks: " + tasks);
+const json = JSON.stringify(savedItems)
+console.log(json)
+tasks.innerHTML = json;
+
 
 export { count };
