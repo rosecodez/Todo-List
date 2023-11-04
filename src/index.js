@@ -1,4 +1,4 @@
-import './style.css';
+import '../src/style.css';
 import { createToDo } from './AppLogic/CreateToDo.js';
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
@@ -6,7 +6,6 @@ import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
 import { task } from "./AppLogic/CreateToDo.js";
 import { remainingTime } from './AppLogic/remainingTime.js';
 import { saveTasks } from "./localStorage/saveTasks";
-import { searchForTasks } from './localStorage/searchForTasks';
 let count = 0;
 
 const addTaskBtn = document.getElementById("add-task");
@@ -119,5 +118,5 @@ console.log(tasks)
 for (const element of savedItems) {
     tasks.appendChild(element);
 }
-export { tasksArray }
+
 export { count };
