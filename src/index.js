@@ -1,12 +1,13 @@
 import '../src/style.css';
-import { createToDo } from './AppLogic/CreateToDo.js';
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
 import { task } from "./AppLogic/CreateToDo.js";
 import { remainingTime } from './AppLogic/remainingTime.js';
+import { merge } from 'lodash';
 
 let count = 0;
+let savedItems = JSON.parse (localStorage.getItem("items"));
 
 const addTaskBtn = document.getElementById("add-task");
 const dialog = document.querySelector("dialog");
@@ -117,9 +118,9 @@ confirmBtn.addEventListener("click", function () {
     localStorage.setItem('items', JSON.stringify(items));
     console.log(items);
 });
+let newArray = [];
 
-let savedItems = JSON.parse (localStorage.getItem("items"));
-if (localStorage.length === 0) {
+if(savedItems && savedItems.length) {
     console.log("local storage is empty");
 } else {
     console.log("local storage is not empty");
@@ -143,6 +144,9 @@ if (localStorage.length === 0) {
         priorityText.style.display = "none";
         notesText.style.display = "none";
         remainingTime();
+        newArray.push(element);
+        console.log(newArray);
+
     });
 }
 
