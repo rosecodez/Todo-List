@@ -3,15 +3,15 @@ import { count } from "../index.js";
 export function createExpandBtn() {
     let expandBtn = document.createElement("button");
     
-    expandBtn.setAttribute("id", "expandBtn-" +count);
+    expandBtn.setAttribute("id", "expandBtn-" +count.value);
     expandBtn.style.padding = "6px 8px";
     expandBtn.style.backgroundColor = "white";
     expandBtn.style.alignSelf = "flex-end";
     expandBtn.textContent = "↑";
     let expandCount = 0;
-    const descriptionText = document.querySelector("#descriptionText-" + count);
-    const priorityText = document.querySelector("#priorityText-" + count);
-    const notesText = document.querySelector("#notesText-" + count);
+    const descriptionText = document.querySelector("#descriptionText-" + count.value);
+    const priorityText = document.querySelector("#priorityText-" + count.value);
+    const notesText = document.querySelector("#notesText-" + count.value);
 
     expandBtn.addEventListener("click", function() {
         expandCount++

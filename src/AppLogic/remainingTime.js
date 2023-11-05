@@ -8,7 +8,7 @@ export function remainingTime() {
     let remainingDays = current_date.getTime() - chosen_date.getTime();
     let days = Math.ceil(remainingDays / ( 1000 *3600 * 24));
 
-    const dueDateText = document.querySelector("#dueDateText-" + count);
+    const dueDateText = document.querySelector("#dueDateText-" + count.value);
 
     dueDateText.textContent = "dueDate: " + dueDate + "(Remaining days: " + Math.abs(days) + ")";
     if (dueDate.length == 0) {

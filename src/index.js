@@ -6,7 +6,24 @@ import { task } from "./AppLogic/CreateToDo.js";
 import { remainingTime } from './AppLogic/remainingTime.js';
 import { searchTasks } from './localStorage/searchTasks';
 
-export let count = 0;
+export let count = (()=>{
+    let countVal = 0;
+    return {
+        get value(){ 
+            return countVal; 
+        },
+        set value(val){ 
+            countVal = val; 
+        },
+        increment(){ 
+            return ++countVal; 
+        },
+        decrement(){
+            return --countVal;
+        }
+    }
+})();
+
 export let savedItems = JSON.parse (localStorage.getItem("items"));
 export let items = [];
 
@@ -43,12 +60,12 @@ addTaskBtn.addEventListener("click", () => {
     priority.value = false;
     notes.value = "";
     
-    count++;
+    count.increment();
 });
 
 cancelBtn.addEventListener("click", () => {
     dialog.close();
-    count--;
+    count.decrement()
 });
 class Item {
     constructor(title, description, dueDate, priority, notes) {
@@ -65,13 +82,13 @@ export function createNewItem() {
 }
 
 confirmBtn.addEventListener("click", function () {
-    createItem(count);
+    createItem(count.value);
     dialog.close();
-    const titleText = document.querySelector("#titleText-" + count);
-    const descriptionText = document.querySelector("#descriptionText-" + count);
-    const dueDateText = document.querySelector("#dueDateText-" + count);
-    const priorityText = document.querySelector("#priorityText-" + count);
-    const notesText = document.querySelector("#notesText-" + count);
+    const titleText = document.querySelector("#titleText-" + count.value);
+    const descriptionText = document.querySelector("#descriptionText-" + count.value);
+    const dueDateText = document.querySelector("#dueDateText-" + count.value);
+    const priorityText = document.querySelector("#priorityText-" + count.value);
+    const notesText = document.querySelector("#notesText-" + count.value);
     
     titleText.textContent = "⁍Title: " + title.value;
     dueDateText.textContent = "dueDate: " + dueDate.value;
@@ -114,4 +131,4 @@ confirmBtn.addEventListener("click", function () {
     localStorage.setItem('items', JSON.stringify(items));
     console.log(items);
 });
-searchTasks();
+searchTasks()

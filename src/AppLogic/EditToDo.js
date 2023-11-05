@@ -1,18 +1,19 @@
 import { count } from "../index.js"
 import { remainingTime } from "./remainingTime.js";
+
 export function editToDo() {
     let editItemBtn = document.createElement("button");
     editItemBtn.textContent = "Edit";
-    editItemBtn.setAttribute("id", "editItemBtn-" +count);
+    editItemBtn.setAttribute("id", "editItemBtn-" +count.value);
     editItemBtn.style.padding = "6px 8px";
     editItemBtn.style.backgroundColor = "white";
 
-    editItemBtn.querySelector("#editItemBtn-" + count);
+    editItemBtn.querySelector("#editItemBtn-" + count.value);
     editItemBtn.addEventListener("click", () => {
         dialog.showModal();
         const confirm = document.getElementById("confirm");
         confirm.style.display = "none";
-        const confirmEditBtn = document.querySelector("#confirmEditBtn-" + count);
+        const confirmEditBtn = document.querySelector("#confirmEditBtn-" + count.value);
         confirmEditBtn.style.display = "flex";
     });
     return editItemBtn
@@ -20,20 +21,20 @@ export function editToDo() {
 
 export function confirmEditToDo() {
     let confirmEditBtn = document.createElement("button");
-    confirmEditBtn.setAttribute("id", "confirmEditBtn-" +count);
+    confirmEditBtn.setAttribute("id", "confirmEditBtn-" +count.value);
     confirmEditBtn.textContent = "confirmEditBtn";
 
     confirmEditBtn.style.padding = "6px 8px";
     confirmEditBtn.style.display = "none";
     confirmEditBtn.style.alignItems = "center";
 
-    const titleText = document.querySelector("#titleText-" + count);
-    const descriptionText = document.querySelector("#descriptionText-" + count);
-    const dueDateText = document.querySelector("#dueDateText-" + count);
-    const priorityText = document.querySelector("#priorityText-" + count);
-    const notesText = document.querySelector("#notesText-" + count);
+    const titleText = document.querySelector("#titleText-" + count.value);
+    const descriptionText = document.querySelector("#descriptionText-" + count.value);
+    const dueDateText = document.querySelector("#dueDateText-" + count.value);
+    const priorityText = document.querySelector("#priorityText-" + count.value);
+    const notesText = document.querySelector("#notesText-" + count.value);
 
-    confirmEditBtn.querySelector("#confirmEditBtn-" + count);
+    confirmEditBtn.querySelector("#confirmEditBtn-" + count.value);
     confirmEditBtn.addEventListener("click", () => {
         titleText.textContent = "⁍Title: " + title.value;
         dueDateText.textContent = "dueDate: " + dueDate.value;

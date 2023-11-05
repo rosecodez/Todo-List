@@ -4,13 +4,13 @@ import verify from "../Icons/check.png";
 export function setComplete() {
     const setCompleteBtn = new Image();
     setCompleteBtn.src = verify;
-    setCompleteBtn.setAttribute("id", "setComplete-" +count);
+    setCompleteBtn.setAttribute("id", "setComplete-" +count.value);
     setCompleteBtn.style.padding = "6px 8px";
 
-    const task = document.querySelector("#task-" + count);
+    const task = document.querySelector("#task-" + count.value);
     let setCompleteCount = 2;
     setCompleteBtn.addEventListener("click", function() {
-        const titleText = document.querySelector("#titleText-" + count);
+        const titleText = document.querySelector("#titleText-" + count.value);
         setCompleteCount++;
         if(setCompleteCount % 2 == 0) {
             task.style.backgroundColor = "#e11d487a";

@@ -10,8 +10,6 @@ export function createDeleteBtn() {
     deleteBtn.addEventListener("click", function () {
         deleteBtn.parentElement.remove();
         savedItems.splice(index, 1);
-
-
     })
     return deleteBtn
 }
