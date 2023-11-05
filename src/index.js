@@ -4,10 +4,11 @@ import { createItem } from "./AppLogic/CreateToDo.js";
 import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
 import { task } from "./AppLogic/CreateToDo.js";
 import { remainingTime } from './AppLogic/remainingTime.js';
-import { merge } from 'lodash';
+import { searchTasks } from './localStorage/searchTasks';
 
-let count = 0;
-let savedItems = JSON.parse (localStorage.getItem("items"));
+export let count = 0;
+export let savedItems = JSON.parse (localStorage.getItem("items"));
+export let items = [];
 
 const addTaskBtn = document.getElementById("add-task");
 const dialog = document.querySelector("dialog");
@@ -23,12 +24,9 @@ const priority3 = document.getElementById("priority3");
 const priority4 = document.getElementById("priority4");
 const notes = document.getElementById("notes");
 const form = document.querySelector("form");
-const viewAllBtn = document.getElementById("view-all");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const formData = new FormData(e.currentTarget);
-  // console.log(Object.fromEntries(formData));
 });
 
 getCurrentDate();
@@ -65,8 +63,6 @@ export function createNewItem() {
     const newItem = new Item(title.value, description.value,dueDate.value, priority.value, notes.value);
     return newItem;
 }
-
-let items = [];
 
 confirmBtn.addEventListener("click", function () {
     createItem(count);
@@ -118,34 +114,4 @@ confirmBtn.addEventListener("click", function () {
     localStorage.setItem('items', JSON.stringify(items));
     console.log(items);
 });
-let newArray = [];
-
-if(!savedItems || !savedItems.length) {
-    console.log("local storage is empty");
-} else {
-    console.log("local storage is not empty");
-
-    savedItems.forEach( (element, index)=>{
-        count = index;
-        createItem(count);
-        const titleText = document.querySelector("#titleText-" + count);
-        const descriptionText = document.querySelector("#descriptionText-" + count);
-        const dueDateText = document.querySelector("#dueDateText-" + count);
-        const priorityText = document.querySelector("#priorityText-" + count);
-        const notesText = document.querySelector("#notesText-" + count);
-        
-        titleText.textContent = "⁍Title: " + `${element.title}`;
-        descriptionText.textContent = "Description: " + `${element.description}`;
-        dueDateText.textContent = "dueDate: " + `${element.dueDate}`;
-        priorityText.textContent = "Priority: " + `${element.priority}`;
-        notesText.textContent = "Notes: " + `${element.notes}`;
-
-        descriptionText.style.display = "none";
-        priorityText.style.display = "none";
-        notesText.style.display = "none";
-        remainingTime();
-        items.push(element);
-    });
-}
-
-export { count };
+searchTasks();

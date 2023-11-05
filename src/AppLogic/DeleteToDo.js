@@ -1,5 +1,5 @@
 import { count } from "../index.js"
-
+import { savedItems } from "../index.js";
 export function createDeleteBtn() {
     let deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
@@ -9,6 +9,9 @@ export function createDeleteBtn() {
 
     deleteBtn.addEventListener("click", function () {
         deleteBtn.parentElement.remove();
+        savedItems.splice(index, 1);
+
+
     })
     return deleteBtn
 }
