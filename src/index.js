@@ -118,13 +118,14 @@ confirmBtn.addEventListener("click", function () {
     console.log(items);
 });
 
-
+let savedItems = JSON.parse (localStorage.getItem("items"));
 if (localStorage.length === 0) {
     console.log("local storage is empty");
 } else {
     console.log("local storage is not empty");
-    let savedItems = JSON.parse (localStorage.getItem("items"));
-    savedItems.forEach(element => {
+
+    savedItems.forEach( (element, index)=>{
+        count = index;
         createItem(count);
         const titleText = document.querySelector("#titleText-" + count);
         const descriptionText = document.querySelector("#descriptionText-" + count);
@@ -143,9 +144,6 @@ if (localStorage.length === 0) {
         notesText.style.display = "none";
         remainingTime();
     });
-    let newArray = [];
-    newArray.push(element);
-    console.log(element);
 }
 
 export { count };
