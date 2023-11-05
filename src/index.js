@@ -120,7 +120,7 @@ confirmBtn.addEventListener("click", function () {
 });
 let newArray = [];
 
-if(savedItems && savedItems.length) {
+if(!savedItems || !savedItems.length) {
     console.log("local storage is empty");
 } else {
     console.log("local storage is not empty");
@@ -144,9 +144,7 @@ if(savedItems && savedItems.length) {
         priorityText.style.display = "none";
         notesText.style.display = "none";
         remainingTime();
-        newArray.push(element);
-        console.log(newArray);
-
+        items.push(element);
     });
 }
 
