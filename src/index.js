@@ -1,30 +1,30 @@
-import '../src/style.css';
+import "../src/style.css";
 import { getCurrentDate } from "./AppLogic/currentDate.js";
 import { createItem } from "./AppLogic/CreateToDo.js";
-import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js"
+import { disablePreviousDate } from "./AppLogic/disablePreviousDate.js";
 import { task } from "./AppLogic/CreateToDo.js";
-import { remainingTime } from './AppLogic/remainingTime.js';
-import { searchTasks } from './localStorage/searchTasks';
+import { remainingTime } from "./AppLogic/remainingTime.js";
+import { searchTasks } from "./localStorage/searchTasks";
 
-export let count = (()=>{
-    let countVal = 0;
-    return {
-        get value(){ 
-            return countVal; 
-        },
-        set value(val){ 
-            countVal = val; 
-        },
-        increment(){ 
-            return ++countVal; 
-        },
-        decrement(){
-            return --countVal;
-        }
-    }
+export let count = (() => {
+  let countVal = 0;
+  return {
+    get value() {
+      return countVal;
+    },
+    set value(val) {
+      countVal = val;
+    },
+    increment() {
+      return ++countVal;
+    },
+    decrement() {
+      return --countVal;
+    },
+  };
 })();
 
-export let savedItems = JSON.parse (localStorage.getItem("items"));
+export let savedItems = JSON.parse(localStorage.getItem("items"));
 export let items = [];
 
 const addTaskBtn = document.getElementById("add-task");
@@ -49,86 +49,93 @@ form.addEventListener("submit", (e) => {
 getCurrentDate();
 
 addTaskBtn.addEventListener("click", () => {
-    dialog.showModal();
-    disablePreviousDate();
-    
-    confirmBtn.style.display = "flex";
-    task.style.backgroundColor = "#1de1407a";
-    title.value = "";
-    description.value = "";
-    dueDate.value = "";
-    priority.value = false;
-    notes.value = "";
-    
-    count.increment();
+  dialog.showModal();
+  disablePreviousDate();
+
+  confirmBtn.style.display = "flex";
+  task.style.backgroundColor = "#1de1407a";
+  title.value = "";
+  description.value = "";
+  dueDate.value = "";
+  priority.value = false;
+  notes.value = "";
+
+  count.increment();
 });
 
 cancelBtn.addEventListener("click", () => {
-    dialog.close();
-    count.decrement()
+  dialog.close();
+  count.decrement();
 });
 class Item {
-    constructor(title, description, dueDate, priority, notes) {
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.notes = notes;
-    }
+  constructor(title, description, dueDate, priority, notes) {
+    this.title = title;
+    this.description = description;
+    this.dueDate = dueDate;
+    this.priority = priority;
+    this.notes = notes;
+  }
 }
 export function createNewItem() {
-    const newItem = new Item(title.value, description.value,dueDate.value, priority.value, notes.value);
-    return newItem;
+  const newItem = new Item(
+    title.value,
+    description.value,
+    dueDate.value,
+    priority.value,
+    notes.value,
+  );
+  return newItem;
 }
 
 confirmBtn.addEventListener("click", function () {
-    createItem(count.value);
-    dialog.close();
-    const titleText = document.querySelector("#titleText-" + count.value);
-    const descriptionText = document.querySelector("#descriptionText-" + count.value);
-    const dueDateText = document.querySelector("#dueDateText-" + count.value);
-    const priorityText = document.querySelector("#priorityText-" + count.value);
-    const notesText = document.querySelector("#notesText-" + count.value);
-    
-    titleText.textContent = "⁍Title: " + title.value;
-    dueDateText.textContent = "dueDate: " + dueDate.value;
+  createItem(count.value);
+  dialog.close();
+  const titleText = document.querySelector("#titleText-" + count.value);
+  const descriptionText = document.querySelector(
+    "#descriptionText-" + count.value,
+  );
+  const dueDateText = document.querySelector("#dueDateText-" + count.value);
+  const priorityText = document.querySelector("#priorityText-" + count.value);
+  const notesText = document.querySelector("#notesText-" + count.value);
 
-    if (description.value === "") {
-        descriptionText.textContent = "Description: none";
-    } else {
-        descriptionText.textContent = "Description: " + description.value;
-    }
+  titleText.textContent = "⁍Title: " + title.value;
+  dueDateText.textContent = "dueDate: " + dueDate.value;
 
-    if (priority.value === "") {
-        priorityText.textContent = "Description: none";
-    } else {
-        priorityText.textContent = "Description: " + priority.value;
-    }
+  if (description.value === "") {
+    descriptionText.textContent = "Description: none";
+  } else {
+    descriptionText.textContent = "Description: " + description.value;
+  }
 
-    if (notes.value === "") {
-        notesText.textContent = "Notes: none";
-    }
-    else {
-        notesText.textContent = "Notes: " + notes.value;
-    }
+  if (priority.value === "") {
+    priorityText.textContent = "Description: none";
+  } else {
+    priorityText.textContent = "Description: " + priority.value;
+  }
 
-    if(priority1.checked) {
-        priorityText.textContent = priority1.value;
-        priorityText.style.background
-    } else if (priority2.checked) {
-        priorityText.textContent = priority2.value;
-    } else if (priority3.checked) {
-        priorityText.textContent = priority3.value;
-    } else if (priority4.checked) {
-        priorityText.textContent = priority4.value;
-    }
-    descriptionText.style.display = "none";
-    priorityText.style.display = "none";
-    notesText.style.display = "none";
-    remainingTime();
-    let newItem = createNewItem();
-    items.push(newItem);
-    localStorage.setItem('items', JSON.stringify(items));
-    console.log(items);
+  if (notes.value === "") {
+    notesText.textContent = "Notes: none";
+  } else {
+    notesText.textContent = "Notes: " + notes.value;
+  }
+
+  if (priority1.checked) {
+    priorityText.textContent = priority1.value;
+    priorityText.style.background;
+  } else if (priority2.checked) {
+    priorityText.textContent = priority2.value;
+  } else if (priority3.checked) {
+    priorityText.textContent = priority3.value;
+  } else if (priority4.checked) {
+    priorityText.textContent = priority4.value;
+  }
+  descriptionText.style.display = "none";
+  priorityText.style.display = "none";
+  notesText.style.display = "none";
+  remainingTime();
+  let newItem = createNewItem();
+  items.push(newItem);
+  localStorage.setItem("items", JSON.stringify(items));
+  console.log(items);
 });
-searchTasks()
+searchTasks();

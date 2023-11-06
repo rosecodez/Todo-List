@@ -1,29 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
-   <title>Todo List</title>
+    <title>Todo List</title>
   </head>
   <body>
-    <script src="bundle.js" defer></script>    <div id="content">
+    <script src="bundle.js" defer></script>
+    <div id="content">
       <div id="header">
         <div class="image">
-          <img src="../src/Icons/home.png" alt="Home">
+          <img src="../src/Icons/home.png" alt="Home" />
           <p>Home</p>
         </div>
         <div class="image">
-          <img src="../src/Icons/bell.png" alt="Notifications">
+          <img src="../src/Icons/bell.png" alt="Notifications" />
           <p>Notifications</p>
         </div>
         <div class="image">
-          <img src="../src/Icons/profile.png" alt="Logo">
+          <img src="../src/Icons/profile.png" alt="Logo" />
           <p>Profile</p>
         </div>
-        
       </div>
       <div id="main">
         <div id="search">
-          <div id="date">Current Date
+          <div id="date">
+            Current Date
             <p id="p1"></p>
           </div>
 
@@ -35,22 +36,41 @@
           <button id="add-task">+ Add Task</button>
           <button id="view-all">View All</button>
         </div>
-        
-        <div id="tasks">
 
-        </div>
+        <div id="tasks"></div>
       </div>
       <div id="dialog-container">
         <dialog id="dialog">
           <form action="/action_page.php">
             <label for="title" class="text">Title</label>
-            <input type="text" class="form" id="title" name="title" value="" placeholder="Title"/>
+            <input
+              type="text"
+              class="form"
+              id="title"
+              name="title"
+              value=""
+              placeholder="Title"
+            />
 
             <label for="description" class="text">Description</label>
-            <input type="text" class="form" id="description" name="author" value=""  placeholder="Description"/>
+            <input
+              type="text"
+              class="form"
+              id="description"
+              name="author"
+              value=""
+              placeholder="Description"
+            />
 
             <label for="dueDate" class="text">dueDate</label>
-            <input type="date" class="form" id="dueDate" name="dueDate" value=""  placeholder="DueDate"/>
+            <input
+              type="date"
+              class="form"
+              id="dueDate"
+              name="dueDate"
+              value=""
+              placeholder="DueDate"
+            />
 
             <label for="priority" class="text">Priority</label>
             <select id="priority" class="form" name="priority">
@@ -59,11 +79,20 @@
               <option id="priority3" value="Medium">Medium</option>
               <option id="priority4" value="Low">Low</option>
             </select>
-              
+
             <label for="notes" class="text">Notes</label>
-            <input type="text" class="form" id="notes" name="notes" value=""  placeholder="Notes"/>
+            <input
+              type="text"
+              class="form"
+              id="notes"
+              name="notes"
+              value=""
+              placeholder="Notes"
+            />
             <div id="buttons">
-              <button id ="cancel" value="cancel" formmethod="dialog">Cancel</button>
+              <button id="cancel" value="cancel" formmethod="dialog">
+                Cancel
+              </button>
               <button id="confirm" value="default">Confirm</button>
             </div>
           </form>
