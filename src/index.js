@@ -91,9 +91,7 @@ confirmBtn.addEventListener("click", function () {
   createItem(count.value);
   dialog.close();
   const titleText = document.querySelector("#titleText-" + count.value);
-  const descriptionText = document.querySelector(
-    "#descriptionText-" + count.value,
-  );
+  const descriptionText = document.querySelector("#descriptionText-" + count.value);
   const dueDateText = document.querySelector("#dueDateText-" + count.value);
   const priorityText = document.querySelector("#priorityText-" + count.value);
   const notesText = document.querySelector("#notesText-" + count.value);
