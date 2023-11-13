@@ -28,6 +28,25 @@ module.exports = {
           },
         ],
       },
-    ],
-  },
+      {
+        test: /\.(?:js|mjs|cjs)$/,
+        exclude: {
+          and: [/node_modules/],
+          not: [
+            /unfetch/,
+            /d3-array|d3-scale/,
+            /@hapi[\\/]joi-date/,
+          ]
+        },
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: "ie 11" }]
+            ]
+          }
+        }
+      }
+    ]
+  }
 };
